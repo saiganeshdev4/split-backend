@@ -16,11 +16,8 @@ app.use(express.static("public"));
 app.use(cors());
 
 const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "Splitwise",
-    password: "password",
-    port: 5432,
+    connectionString : "postgres://splitwise_zvtj_user:wX4CDbAlbBl7DYSnxn5xtPjBQJamdQyn@dpg-codtgeol5elc73fu8q60-a.singapore-postgres.render.com/splitwise_zvtj",
+    port : 5432,
   });
   db.connect();
 
