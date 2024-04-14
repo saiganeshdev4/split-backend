@@ -18,6 +18,9 @@ app.use(cors());
 const db = new pg.Client({
     connectionString : "postgres://splitwise_zvtj_user:wX4CDbAlbBl7DYSnxn5xtPjBQJamdQyn@dpg-codtgeol5elc73fu8q60-a.singapore-postgres.render.com/splitwise_zvtj",
     port : 5432,
+    ssl: {
+        rejectUnauthorized: false // Only if your PostgreSQL instance uses self-signed SSL certificates
+      },
   });
   db.connect();
 
