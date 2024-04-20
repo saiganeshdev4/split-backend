@@ -129,7 +129,7 @@ app.get("/listOfUsersNotPresentInGroup/:groupName",async(req,res)=>{
    try{
           var group_name= req.params.groupName;
           const allUsers = await axios.get(url_for_this_backend+"/AllUsers");
-          const existingUsers = await axios.get(url_for_this_backend+`/${group_name}`);
+          const existingUsers = await axios.get(url_for_this_backend+`/group/${group_name}`);
           var list_of_users_not_in_grp= allUsers.data.filter(ele => !existingUsers.data.group_members.includes(ele));
 
           res.json(list_of_users_not_in_grp);
@@ -273,7 +273,7 @@ app.get("/listOfGroups/:currentUser", async (req,res)=>{
 app.get("/groups/:currentUser",async(req,res)=>{
     try{
         var current_user=req.params.currentUser;
-        var result = await axios.get(url_for_this_backend+`/${current_user}`);
+        var result = await axios.get(url_for_this_backend+`/listOfGroups/${current_user}`);
 
           var groups_info=
           await Promise.all(
@@ -304,7 +304,7 @@ app.get("/groups/:currentUser",async(req,res)=>{
 
 async function func(current_user,group_name)
 {
-    var result = await axios.get(url_for_this_backend+`/${current_user}?group=${group_name}`);
+    var result = await axios.get(url_for_this_backend+`/friends/${current_user}?group=${group_name}`);
 
     var owe_list = [];
     var money=0;
