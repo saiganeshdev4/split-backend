@@ -23,12 +23,19 @@ const db = new pg.Client({
   });
   db.connect();
 
+  db.query("delete  from owe");
+  db.query("delete  from split");
+  db.query("delete  from \"group\"");
+  db.query("delete from account");
+//db.query("delete from account where user_name=${user}",(err,result)=>{if(err) console.log(err); else console.log(result)});
 
-  db.query("create table \"owe\"( \
-    owe_id serial primary key,\
-    split_id int unique not null, \
-    receiver varchar not null, \
-    money  float not null )",(err,result)=>{if(err){console.log(err);}else{console.log("sucess");}});
+// db.query("ALTER TABLE owe DROP CONSTRAINT owe_split_id_key",(err,result)=>{if(err) console.log(err); else console.log(result)});
+
+//   db.query("create table \"owe\"( \
+//     owe_id serial primary key,\
+//     split_id int unique not null, \
+//     receiver varchar not null, \
+//     money  float not null )",(err,result)=>{if(err){console.log(err);}else{console.log("sucess");}});
 
 
 //     db.query("create table \"group\"( \
@@ -42,6 +49,8 @@ const db = new pg.Client({
 //     acc_id serial primary key, \
 //       user_name varchar not null, \
 //       acc_password varchar not null)",(err,result)=>{if(err){console.log(err);}else{console.log("sucess");}});
+
+// db.query("",(err,result)=>{if(err){console.log(err);}else{console.log("sucess");}});
 app.listen(port,()=>{
     console.log(`Backend server running in the port ${port}`);
 });

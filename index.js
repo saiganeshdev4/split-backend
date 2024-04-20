@@ -7,10 +7,6 @@ import cors from "cors";
 
 const app = express();
 const port = 4000;
-/*
-6) // not returing correct time, debug later
-*/
-
 const url_for_this_backend="https://split-backend-k1db.onrender.com";
 
 app.use(bodyParser.json());
@@ -421,11 +417,10 @@ app.get("/group/:group_name",async(req,res)=>{
      }
 });
 
-// not returing correct time, debug later
 function getTime()
 {
     var today = new Date();
-    return today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+' '+today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    return today.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })+" IST";
 }
 
 // edits split for given split_id
@@ -576,9 +571,10 @@ app.get("/split/:id",async(req,res)=>{
 });
 
 
-  // deletes a particular account  -- used by admin - end user can delete only their own account
+  // deletes a particular account - end user can delete only their own account
   // should pass userName as path parameter
   // assumes that account passed is valid account
+  // also assumes that account passed has cleared all the splits
 app.delete("/delete/account/:userName",async(req,res)=>{
     var user_name = req.params.userName;
     try{
