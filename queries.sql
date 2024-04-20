@@ -4,7 +4,7 @@ create table "split"(
     split_id serial primary key,
     split_name varchar not null,  -- description
 	group_name varchar not null,
-    split_time timestamp,  -- time when the split is added
+    split_time varchar not null,  -- time when the split is added
 	sender varchar not null,   -- user who added the split
     total_money float not null,  -- total money paid by user_name
     money_sender_gets float not null,
