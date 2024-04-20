@@ -18,7 +18,8 @@ app.use(express.static("public"));
 app.use(cors());
 
 const db = new pg.Client({
-    connectionString : "postgres://splitwise_zvtj_user:wX4CDbAlbBl7DYSnxn5xtPjBQJamdQyn@dpg-codtgeol5elc73fu8q60-a.singapore-postgres.render.com/splitwise_zvtj",
+    // this is internal url for posgtre database hosted on render.com, for more info https://docs.render.com/databases#connect-to-your-database
+    connectionString : "postgres://splitwise_zvtj_user:wX4CDbAlbBl7DYSnxn5xtPjBQJamdQyn@dpg-codtgeol5elc73fu8q60-a/splitwise_zvtj",
     port : 5432,
     ssl: {
         rejectUnauthorized: false // Only if your PostgreSQL instance uses self-signed SSL certificates
