@@ -13,7 +13,7 @@ create table "split"(
 
 create table "owe"(
     owe_id serial primary key,
-    split_id int unique not null,
+    split_id int not null,
     receiver varchar not null,
     money  float not null
 );
