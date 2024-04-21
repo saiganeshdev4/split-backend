@@ -579,6 +579,11 @@ app.delete("/delete/account/:userName",async(req,res)=>{
     var user_name = req.params.userName;
     try{
             await db.query("delete from account where user_name=$1",[user_name]);
+            var list_of_groups = await axios.get(url_for_this_backend+`/listOfGroups/${user_name}`);
+
+            list_of_groups.data.forEach(async(ele)=>{
+               await axios.delete(url_for_this_backend+`/removeMember/${ele}?currentUser=${user_name}`);
+            })
             res.status(200).json({msg:"Account has been deleted"});
     }
     catch(err)
